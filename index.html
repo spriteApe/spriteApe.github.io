@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      *{
+      * {
         margin: 0;
         padding: 0;
       }
@@ -22,11 +22,11 @@
         color: #fff;
         font-size: 28px;
       }
-      #box .line{
+      #box .line {
         display: flex;
         justify-content: space-between;
       }
-      #box  span:nth-child(7) {
+      #box span:nth-child(7) {
         background: blue;
       }
       button {
@@ -95,35 +95,38 @@
         brr = null
 
       btn[0].onclick = function() {
-        [...line].forEach(line=>{
-          var span=line.getElementsByTagName('span')
-        span[5].style.background = "red"
+        ;[...line].forEach((line) => {
+          var span = line.getElementsByTagName("span")
+          span[5].style.background = "red"
         })
         fn(6)
       }
       //开始
 
       btn[1].onclick = function() {
-        [...line].forEach(line=>{
-          var span=line.getElementsByTagName('span')
-        span[5].style.background = "blue"
+        ;[...line].forEach((line) => {
+          var span = line.getElementsByTagName("span")
+          span[5].style.background = "blue"
         })
         fn(5)
       }
 
       //清空
       btn[2].onclick = qk
+      function getRendom(max) {
+        var rand = Math.round(Math.random() * (max - 1)) + 1
+        return rand > 9 ? rand.toString() : "0" + rand
+      }
       //获取val(5/6)个红球
-      function fn(val,lineCount=0) {
-        console.log(val,lineCount)
-        if(lineCount>4)return
+      function fn(val, lineCount = 0) {
+        if (lineCount > 4) return
         arr = []
         //随机获取5个红球
         for (var i = 0; i < val; i++) {
           if (val == 5) {
-            var rand = Math.floor(Math.random() * 35 + 1)
+            var rand = getRendom(35)
           } else {
-            var rand = Math.floor(Math.random() * 33 + 1)
+            var rand = getRendom(33)
           }
 
           if (arr.indexOf(rand) == -1) {
@@ -143,20 +146,20 @@
           }
         }
         if (val == 5) {
-          fn1(2,lineCount,val)
+          fn1(2, lineCount, val)
         } else {
-          fn1(1,lineCount,val)
+          fn1(1, lineCount, val)
         }
       }
       //获取1/2个篮球
-      function fn1(val,lineCount,redCount) {
+      function fn1(val, lineCount, redCount) {
         brr = []
         //随机获取val个数字
         for (var i = 0; i < val; i++) {
           if (val == 2) {
-            var rand = Math.floor(Math.random() * 13 + 1)
+            var rand = getRendom(12)
           } else {
-            var rand = Math.floor(Math.random() * 16 + 1)
+            var rand = getRendom(16)
           }
 
           if (brr.indexOf(rand) == -1) {
@@ -180,14 +183,14 @@
           arr.push(brr[i])
         }
         //将arr中的7位数字写入span
-       var span= line[lineCount].getElementsByTagName('span')
+        var span = line[lineCount].getElementsByTagName("span")
         for (var i = 0; i < span.length; i++) {
           span[i].innerHTML = arr[i]
         }
-        fn(redCount,++lineCount)
+        fn(redCount, ++lineCount)
       }
       function qk() {
-        var span=document.getElementsByTagName('span')
+        var span = document.getElementsByTagName("span")
         for (var i = 0; i < span.length; i++) {
           span[i].innerHTML = ""
         }
