@@ -1,1 +1,0 @@
-import{o as n,c as r}from"./index-a239973e.js";const a=(t,c)=>{const e=t.__vccOpts||t;for(const[o,s]of c)e[o]=s;return e},_={},d={class:"asdasd"};function f(t,c){return n(),r("div",d,"123")}const l=a(_,[["render",f]]);export{l as default};
